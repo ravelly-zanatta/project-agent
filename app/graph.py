@@ -1,11 +1,12 @@
 from langgraph.graph import StateGraph, END
-from app.state import MessageState
-from app.agents.classifier import classify_message
-from app.agents.router import route_message
-from app.handlers.fraude import handle_fraude
-from app.handlers.assedio import handle_assedio
-from app.handlers.reclamacao import handle_reclamacao
-from app.handlers.outro import handle_outro
+from state import MessageState
+from agents.classifier import classify_message
+from agents.router import route_message
+from handlers.fraude import handle_fraude
+from handlers.assedio import handle_assedio
+from handlers.reclamacao import handle_reclamacao
+from handlers.outro import handle_outro
+import csv
 
 # Constrói e compila o grafo de execução do LangGraph
 def build_graph():

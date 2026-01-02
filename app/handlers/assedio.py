@@ -1,4 +1,4 @@
-from app.state import MessageState
+from state import MessageState
 
 # Encaminha a mensagem classificada como assédio para Ombudsman
 def handle_assedio(state: MessageState) -> MessageState:

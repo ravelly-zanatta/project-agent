@@ -1,4 +1,4 @@
-from app.state import MessageState
+from state import MessageState
 
 # Encaminha a mensagem classificada como reclamação para Atendimento ao Cliente
 def handle_reclamacao(state: MessageState) -> MessageState:

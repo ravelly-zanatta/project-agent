@@ -1,4 +1,4 @@
-from app.state import MessageState
+from state import MessageState
 
 # Função que define o fluxo do LangGraph com base na classificação da mensagem
 def route_message(state: MessageState) -> str:

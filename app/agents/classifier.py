@@ -1,8 +1,8 @@
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
-from app.models.schemas import ClassificationResult
-from app.state import MessageState
+from models.schemas import ClassificationResult
+from state import MessageState
 
 # Criar o parser estruturado
 parser = PydanticOutputParser(pydantic_object=ClassificationResult)
