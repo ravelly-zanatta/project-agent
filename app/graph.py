@@ -43,15 +43,6 @@ def build_graph():
 if __name__ == "__main__":
     app = build_graph()
 
-    # input_state = {
-    #     #"text": "Fui ofendido pelo atendente",
-    #     "text": "Estão usando meu CPF para abrir contas falsas",
-    #     "classification": None,
-    #     "department": None
-    # }
-    # result = app.invoke(input_state)
-    # print(result)
-
     with open("data/mensagens-fake.csv", newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f) 
 
