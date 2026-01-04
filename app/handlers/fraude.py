@@ -1,4 +1,4 @@
-from state import MessageState
+from app.state import MessageState
 from logs.logger import get_logger, log_event
 
 # Logger específico do Central de Fraude

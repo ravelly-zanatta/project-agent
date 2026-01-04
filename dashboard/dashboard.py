@@ -6,7 +6,7 @@ from pathlib import Path
 import plotly.express as px
 
 ## Configuração de logs
-LOG_DIR = Path("app/logs")
+LOG_DIR = Path("logs")
 
 ## Carregar logs em um DataFrame
 def load_logs():

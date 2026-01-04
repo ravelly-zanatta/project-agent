@@ -1,11 +1,11 @@
 from langgraph.graph import StateGraph, END
-from state import MessageState
-from agents.classifier import classify_message
-from agents.router import route_message
-from handlers.fraude import handle_fraude
-from handlers.assedio import handle_assedio
-from handlers.reclamacao import handle_reclamacao
-from handlers.outro import handle_outro
+from app.state import MessageState
+from app.agents.classifier import classify_message
+from app.agents.router import route_message
+from app.handlers.fraude import handle_fraude
+from app.handlers.assedio import handle_assedio
+from app.handlers.reclamacao import handle_reclamacao
+from app.handlers.outro import handle_outro
 import csv
 
 # Constrói e compila o grafo de execução do LangGraph
@@ -43,7 +43,7 @@ def build_graph():
 if __name__ == "__main__":
     app = build_graph()
 
-    with open("data/mensagens-fake.csv", newline="", encoding="utf-8") as f:
+    with open("app/data/mensagens-fake.csv", newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f) 
 
         for row in reader:
