@@ -18,7 +18,7 @@ def handle_fraude(state: MessageState) -> MessageState:
             "event": "message_routed",
             "department": "Central de Fraude",
             "classification": "fraude",
-            "input_message": state["text"],
+            "input_message": state["message"],
         }
     )
 

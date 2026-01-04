@@ -17,8 +17,8 @@ def handle_assedio(state: MessageState) -> MessageState:
         {
             "event": "message_routed",
             "department": "Ombudsman",
-            "classification": "assedio",
-            "input_message": state["text"],
+            "classification": "assédio",
+            "input_message": state["message"],
         }
     )
 

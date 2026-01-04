@@ -22,9 +22,9 @@ prompt = ChatPromptTemplate.from_messages([
         Responda somente com o nome da categoria."""
     ),
     # Mensagem do usuário (humano)
-    # {text} -> conteúdo da mensagem do cliente
+    # {message} -> conteúdo da mensagem do cliente
     # {format_instructions} -> instruções automáticas do parser Pydantic
-    ("human", "{text}\n\n{format_instructions}")
+    ("human", "{message}\n\n{format_instructions}")
 ])
 
 # Inicializa a LMM Groq
@@ -38,7 +38,7 @@ chain = prompt | llm | parser
 # Função do nó de classificação
 def classify_message(state: MessageState) -> MessageState:
     result = chain.invoke({
-        "text": state["text"],
+        "message": state["message"],
         "format_instructions": parser.get_format_instructions()
     })
 

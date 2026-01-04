@@ -1,6 +1,9 @@
 import json
 import logging
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+
+BR_TZ = ZoneInfo("America/Sao_Paulo")
 
 def get_logger(name: str, log_file: str):
     logger = logging.getLogger(name)
@@ -16,5 +19,5 @@ def get_logger(name: str, log_file: str):
 
 
 def log_event(logger, event: dict):
-    event["timestamp"] = datetime.now(timezone.utc).isoformat()
+    event["timestamp"] = datetime.now(BR_TZ).isoformat()
     logger.info(json.dumps(event, ensure_ascii=False))

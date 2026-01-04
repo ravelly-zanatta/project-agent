@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
         for row in reader:
             input_state = {
-                "text": row["messages"],
+                "message": row["messages"],
                 "classification": None,
                 "department": None
             }

@@ -17,8 +17,8 @@ def handle_reclamacao(state: MessageState) -> MessageState:
         {
             "event": "message_routed",
             "department": "Atendimento ao Cliente",
-            "classification": "reclamacao",
-            "input_message": state["text"],
+            "classification": "reclamação",
+            "input_message": state["message"],
         }
     )
 

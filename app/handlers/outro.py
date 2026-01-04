@@ -18,7 +18,7 @@ def handle_outro(state: MessageState) -> MessageState:
             "event": "message_routed",
             "department": "Central de Atendimento Geral",
             "classification": "outro",
-            "input_message": state["text"],
+            "input_message": state["message"],
         }
     )
 
