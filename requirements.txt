@@ -1,0 +1,22 @@
+# Dashboard
+streamlit>=1.32
+pandas>=2.0
+matplotlib>=3.7
+plotly>=5.18
+
+# API REST
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.0
+
+# Datas / timezone
+python-dateutil>=2.8
+
+# Variáveis de ambiente
+python-dotenv>=1.0.0
+
+# LangChain e LangGraph
+langchain>=0.1.98,<0.3
+langchain-core>=0.2.3,<0.3
+langgraph>=0.0.50
+langchain-groq>=0.1.6

@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from app.models.schemas import ClassificationResult
 from app.state import MessageState
+
+load_dotenv()
 
 # Criar o parser estruturado
 parser = PydanticOutputParser(pydantic_object=ClassificationResult)
@@ -28,7 +32,8 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # Inicializa a LMM Groq
-llm = ChatGroq(model="openai/gpt-oss-20b", 
+llm = ChatGroq(model="openai/gpt-oss-20b",     # Você pode escolher outro modelo disponível no Groq
+               api_key=os.getenv("GROQ_API_KEY"),
               temperature=0.0
               )
 
