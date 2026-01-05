@@ -13,22 +13,52 @@ Nesse projeto, o **Langchain** foi utilizado como camada responsável pela integ
 
 O **LangGraph** foi utilizado para a orquestração do fluxo multiagente, organizando o processamento das mensagens em um grafo de estados definido. Cada nó do grafo representa uma etapa específica, como classificação, roteamento e encaminhamento, enquanto as transições controlam a sequência lógica e as decisões do sistema.
 
-O diagrama abaixo mostra, resumidamente, o fluxo do processo de classificação das mensagens e encaminhamento aos setores.
+O diagrama abaixo mostra, resumidamente, o fluxo do processo de classificação das mensagens e de encaminhamento aos setores.
 ```
-+--------------------+           +---------------------+           +-------------------+          +------------------------+
-| Entrada dos dados  |           | Leitura automatizada|           | Classificação das |          |   Define o fluxo do    |
-| (CSV ou API REST)  |  ----->   | das mensagens       |  ----->   | mensagens (LLM)   |  ----->  | LangGraph (roteamento) | 
-+--------------------+           +---------------------+           +-------------------+          +------------------------+
-                                                                                                         |
-                        +--------------------------------------------------------------------------------+
-                        |
-                        v
-              +--------------------+          +---------------------+          +-----------------------+
-              |   Encaminhar para  |          |    Registra logs    |          |   Visualização no     |
-              |       o setor      |  ----->  | estruturados (JSON) |  ----->  | Dashboard (Streamlit) |
-              +--------------------+          +---------------------+          +-----------------------+
+                     +--------------------+
+                     | Entrada dos dados  |
+                     | (CSV ou API REST)  |
+                     +---------+----------+
+                               |
+                               v
+                     +--------------------+
+                     | Leitura / Parsing  |
+                     | das mensagens      |
+                     +---------+----------+
+                               |
+                               v
+          +-------------------------------------------+
+          |               LangGraph                   |
+          |-------------------------------------------|
+          |  +-------------------+                    |
+          |  | Classificação     |  (LangChain e LLM) |
+          |  +-------------------+                    |
+          |            |                              |
+          |            v                              |
+          |  +-------------------+                    |
+          |  | Roteamento        |  (condicional)     |
+          |  +-------------------+                    |
+          |            |                              |
+          |            v                              |
+          |  +-------------------+                    |
+          |  | Encaminhamento    |  (handlers)        |
+          |  | simulado (logs)   |                    |
+          |  +-------------------+                    |
+          +-------------------+-----------------------+
+                              |
+                              v
+                +----------------------------+
+                | Observabilidade            |
+                | - Logs estruturados (JSON) |
+                | - Dashboard Streamlit      |
+                +----------------------------+
 
 ```
+#### Escolha do Modelo de Linguagem (LLM)
+
+O modelo `openai/gpt-oss-20b` foi escolhido para esse projeto devido à sua alta precisão e à capacidade de inferência semântica e de compreensão contextual, especialmente em contextos sensíveis (fraude e assédio) que podem conter mensagens ambíguas, sensíveis, emocionais ou até mesmo mal escritas. Nesses casos, um falso negativo pode resultar em impactos críticos.
+
+Embora modelos menores ofereçam menor latência, o `GPT-OSS-20B` apresenta um bom equilíbrio entre desempenho e custo, com throughput elevado (~1000 tokens/s), amplo contexto e maior robustez na tomada de decisão. Essa característica é fundamental para reduzir erros de classificação em cenários críticos.
 
 ### Tecnologias Complementares:
 - **Groq:** Por meio da integração com a **API Groq** via **LangChain**, o sistema consegue acessar modelos otimizados para desempenho, garantindo respostas rápidas mesmo em cenários de alto volume de mensagens.
