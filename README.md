@@ -62,7 +62,7 @@ Embora modelos menores ofereçam menor latência, o `GPT-OSS-20B` apresenta um b
 
 ### Tecnologias Complementares:
 - **Groq:** Por meio da integração com a **API Groq** via **LangChain**, o sistema consegue acessar modelos otimizados para desempenho, garantindo respostas rápidas mesmo em cenários de alto volume de mensagens.
-- **FastAPI:** É responsável por expor uma **API REST** para integração com sistemas externos. Ele permite receber mensagens via HTTP, validá-las automaticamente, encaminhá-las ao fluxo de processamento e retornar respostas estruturadas de forma eficiente. (Esse projeto também tem a opção de ler uma lista de mensagens em um arquivo `.csv` para testar o modelo)
+- **FastAPI:** É responsável por expor uma **API REST** para integração com sistemas externos. Ele permite receber mensagens via HTTP, validá-las automaticamente, encaminhá-las ao fluxo de processamento e retornar respostas estruturadas de forma eficiente. (O projeto também oferece a opção de processamento offline em batch, utilizando listas de mensagens armazenadas em arquivos `.csv`).
 - **Streamlit:** O Streamlit permite criar um **dashboard** interativo para acompanhar o comportamento do sistema. Por meio dele, é possível visualizar métricas como volume de mensagens, classificações, encaminhamentos por setor, distribuição temporal e alertas operacionais, a partir dos logs de saída do sistema.
 
 ## Como executar o projeto
