@@ -13,6 +13,23 @@ Nesse projeto, o **Langchain** foi utilizado como camada responsável pela integ
 
 O **LangGraph** foi utilizado para a orquestração do fluxo multiagente, organizando o processamento das mensagens em um grafo de estados definido. Cada nó do grafo representa uma etapa específica, como classificação, roteamento e encaminhamento, enquanto as transições controlam a sequência lógica e as decisões do sistema.
 
+O diagrama abaixo mostra, resumidamente, o fluxo do processo de classificação das mensagens e encaminhamento aos setores.
+```
++--------------------+           +---------------------+           +-------------------+          +------------------------+
+| Entrada dos dados  |           | Leitura automatizada|           | Classificação das |          |   Define o fluxo do    |
+| (CSV ou API REST)  |  ----->   | das mensagens       |  ----->   | mensagens (LLM)   |  ----->  | LangGraph (roteamento) | 
++--------------------+           +---------------------+           +-------------------+          +------------------------+
+                                                                                                         |
+                        +--------------------------------------------------------------------------------+
+                        |
+                        v
+              +--------------------+          +---------------------+          +-----------------------+
+              |   Encaminhar para  |          |    Registra logs    |          |   Visualização no     |
+              |       o setor      |  ----->  | estruturados (JSON) |  ----->  | Dashboard (Streamlit) |
+              +--------------------+          +---------------------+          +-----------------------+
+
+```
+
 ### Tecnologias Complementares:
 - **Groq:** Por meio da integração com a **API Groq** via **LangChain**, o sistema consegue acessar modelos otimizados para desempenho, garantindo respostas rápidas mesmo em cenários de alto volume de mensagens.
 - **FastAPI:** É responsável por expor uma **API REST** para integração com sistemas externos. Ele permite receber mensagens via HTTP, validá-las automaticamente, encaminhá-las ao fluxo de processamento e retornar respostas estruturadas de forma eficiente. (Esse projeto também tem a opção de ler uma lista de mensagens em um arquivo `.csv` para testar o modelo)
