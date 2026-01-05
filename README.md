@@ -83,7 +83,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Executar Projeto (Com lista de mensagens via arquivo `.csv`)
+### Executar Projeto (com entrada de dados em batch, arquivo `.csv`)
 
 **Passo 1:** Configuração do Groq.
   - [Acessar o site da Groq](https://groq.com/)
